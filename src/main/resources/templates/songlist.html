@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<title>Book List</title>
+<title>Song List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
 	th:href="@{css/bootstrap.min.css}" />
@@ -10,7 +10,7 @@
 	th:href="@{css/custom.css}" />
 </head>
 <body>
-	<h1>Books</h1>
+	<h1>Songs</h1>
 	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 	<table class="table table-striped">
 		<tr>
@@ -26,14 +26,11 @@
 
 		</tr>
 		
-		<tr th:each="book : ${books}">
-			<td th:text="${book.id}">id</td>
-			<td th:text="${book.title}">title</td>
-			<td th:text="${book.author}">author</td>
-			<td th:text="${book.isbn}">isbn</td>
-			<td th:text="${book.year}">year</td>
-			<td th:text="${book.price}">price</td>
-			<td th:text="${book.category.name}">category</td>
+		<tr th:each="song : ${songs}">
+			<td th:text="${song.songId}">id</td>
+			<td th:text="${song.songName}">title</td>
+			
+			<!-- <td th:text="${book.category.name}">category</td>
 
 			<td sec:authorize="hasAuthority('ADMIN')"><a
 				th:href="@{/deletebook/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
@@ -44,10 +41,10 @@
 			<td sec:authorize="hasAuthority('USER')"></td>
 
 
-		</tr>
+		</tr>-->
 	</table>
 
-	<a href="/addBook" class="btn btn-success">New book</a>
+	<!--  <a href="/addBook" class="btn btn-success">New book</a>-->
 	<form th:action="@{/logout}" method="post">
 		<input type="submit" value="Sign Out" class="btn btn-warning" />
 
