@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+import swd20.musicstore.domain.*;
 import swd20.musicstore.domain.Song;
 import swd20.musicstore.domain.SongRepository;
 import swd20.musicstore.domain.Album;
@@ -25,29 +26,26 @@ public class MusicstoreApplication {
 		SpringApplication.run(MusicstoreApplication.class, args);
 	}
 
-	/*@Bean
-	public CommandLineRunner musicDemo(SongRepository songRepository1, AlbumRepository aRepository,
+	@Bean
+	public CommandLineRunner musicDemo(SongRepository songRepository, AlbumRepository aRepository,
 			UserRepository uRepository) {
 		return (args) -> {
-		
-			// aRepository.save(new Album("Eepos"));
-			// aRepository.save(new Album("Komedia"));
-			// aRepository.save(new Album("Muu"));
 
-			// songRepository1.save(new Song(null, "Kalevala", "Makkonen Sami", 2019,
-			// "9789511335696", 21.95, cRepository.findByName("Eepos").get(0)));
-			// songRepository1.save(new Song(null, "Fingerpori 12", "Jarla Pertti", 2019,
-			// "9789520118990", 17.95, cRepository.findByName("Komedia").get(0)));
+			aRepository.save(new Album("Muu"));
 
-			
-			Users user1 = new Users("admin", "$2a$10$kK6wHneFME4Mo3Ar9H.NXu/x09MAK6M0C8Zvcxutx/j3YJ7SNM5.y", "ADMIN");
-			uRepository.save(user1);
-			
+			songRepository.save(new Song(null, "test", aRepository.findByAlbumName("Muu").get(0)));
 
-			log.info("fetch all songs");
-			for (Song song : songRepository1.findAll()) {
+			/*
+			 * Users user1 = new
+			 * Users("admin","$2a$10$kK6wHneFME4Mo3Ar9H.NXu/x09MAK6M0C8Zvcxutx/j3YJ7SNM5.y",
+			 * "ADMIN"); uRepository.save(user1);
+			 */
+
+			/*log.info("fetch all songs");
+			for (Song song : songRepository.findAll()) {
 				log.info(song.toString());
-			}
+			}*/
+
 		};
-	}*/
+	}
 }

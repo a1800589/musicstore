@@ -15,14 +15,10 @@
 	<table class="table table-striped">
 		<tr>
 			<th>Id</th>
-			<th>Title</th>
-			<th>Author</th>
-			<th>ISBN</th>
-			<th>Year</th>
-			<th>Price (€)</th>
-			<th>Category</th>
-			<th></th>
-			<th></th>
+			<th>Song </th>
+			<th>Album</th>
+		
+		
 
 		</tr>
 		
@@ -30,8 +26,8 @@
 			<td th:text="${song.songId}">id</td>
 			<td th:text="${song.songName}">title</td>
 			
-			<!-- <td th:text="${book.category.name}">category</td>
-
+			 <td th:text="${song.album.albumName}">category</td>
+<!--  
 			<td sec:authorize="hasAuthority('ADMIN')"><a
 				th:href="@{/deletebook/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
 			</td>

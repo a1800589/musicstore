@@ -12,14 +12,15 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Album {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false, updatable = false)
-	long albumId;
+	@Column(name = "albumId", nullable = false, updatable = false)
+	private Long albumId;
 	@Column(name = "albumName", nullable = false)
-	String albumName;
+	private String albumName;
 	@Column(name = "year")
-	int year;
+	private int year;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "album")
 	private List<Song> songs;
 
@@ -32,11 +33,11 @@ public class Album {
 		this.albumName = albumName;
 	}
 
-	public long getAlbumId() {
+	public Long getAlbumId() {
 		return albumId;
 	}
 
-	public void setAlbumId(long albumId) {
+	public void setAlbumId(Long albumId) {
 		this.albumId = albumId;
 	}
 
@@ -64,4 +65,8 @@ public class Album {
 		this.songs = songs;
 	}
 
+	@Override
+	public String toString() {
+		return "Album [albumId=" + albumId + ", albumName=" + albumName + ", year=" + year + ", songs=" + songs + "]";
+	}
 }

@@ -6,19 +6,16 @@ import javax.validation.constraints.NotEmpty;
 
 public class SignupForm {
     @NotEmpty
-    @Size(min=5, max=30)
+    @Size(min=3, max=30)
     private String username = "";
 
     @NotEmpty
-    @Size(min=7, max=30)
+    @Size(min=3, max=30)
     private String password = "";
 
     @NotEmpty
-    @Size(min=7, max=30)
+    @Size(min=3, max=30)
     private String passwordCheck = "";
-    
-    @NotEmpty
-    private String email = "";
     
     @NotEmpty
     private String role = "USER";
@@ -45,14 +42,6 @@ public class SignupForm {
 
 	public void setPasswordCheck(String passwordCheck) {
 		this.passwordCheck = passwordCheck;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-	
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	
 	
