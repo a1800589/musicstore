@@ -2,21 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
+<title>Add Song</title>
  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/custom.css}" />
 </head>
 <body>
 
-<h1>Book</h1>
-	<form action="#" th:action="@{/editBook}"  th:object= ${book} method="post">
-	<p>Title: <input type="text" th:field="${book.title}" /></p>
-	<p>Author: <input type="text" th:field="${book.author}" /></p>
-	<p>ISBN: <input type="text" th:field="${book.isbn}" /></p>
-	<p>Year: <input type="text" th:field="${book.year}" /></p>
-	<p>Price: <input type="text" th:field="${book.price}" /></p>
-	<p>Category: <select id="catlist" th:field="*{category}" >
-       			<option th:each="category: ${categories}" th:value="${category.categoryId}" th:text="${category.name}"></option>
+<h1>Song</h1>
+	<form action="#" th:action="@{/editSong}"  th:object= ${song} method="post">
+	<p>Name: <input type="text" th:field="${song.songName}" /></p>
+
+	
+	<p>Album: <select id="alblist" th:field="*{album}" >
+       			<option th:each="album: ${albums}" th:value="${album.albumId}" th:text="${album.albumName}"></option>
     		</select>	 </p> 
 	<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
 	</form>

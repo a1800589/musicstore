@@ -25,7 +25,7 @@ public class MusicstoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MusicstoreApplication.class, args);
 	}
-
+   
 	@Bean
 	public CommandLineRunner musicDemo(SongRepository songRepository, AlbumRepository aRepository,
 			UserRepository uRepository) {
@@ -35,11 +35,10 @@ public class MusicstoreApplication {
 
 			songRepository.save(new Song(null, "test", aRepository.findByAlbumName("Muu").get(0)));
 
-			/*
-			 * Users user1 = new
-			 * Users("admin","$2a$10$kK6wHneFME4Mo3Ar9H.NXu/x09MAK6M0C8Zvcxutx/j3YJ7SNM5.y",
-			 * "ADMIN"); uRepository.save(user1);
-			 */
+			
+			  Users user1 = new
+			  Users("admin","$2a$10$kK6wHneFME4Mo3Ar9H.NXu/x09MAK6M0C8Zvcxutx/j3YJ7SNM5.y","ADMIN"); uRepository.save(user1);
+			 
 
 			/*log.info("fetch all songs");
 			for (Song song : songRepository.findAll()) {

@@ -39,40 +39,52 @@ public class SongController {
 		model.addAttribute("songs", songs);
 		return "songlist";
 	}
-	/*
-	 * @GetMapping("/addBook") public String getNewBookForm(Model model) {
-	 * model.addAttribute("book", new Book()); model.addAttribute("categories",
-	 * cRepository.findAll()); return "addBook"; }
-	 * 
-	 * @PostMapping("/addBook") public String saveBook(@ModelAttribute Book book) {
-	 * 
-	 * bookRepository.save(book); return "redirect:/booklist"; }
-	 * 
-	 * @GetMapping("/deletebook/{id}")
-	 * 
-	 * @PreAuthorize("hasAuthority('ADMIN')") public String
-	 * deleteBook(@PathVariable("id") Long bookId) {
-	 * 
-	 * bookRepository.deleteById(bookId); return "redirect:../booklist"; }
-	 * 
-	 * @GetMapping("/editBook/{id}") public String editBook(@PathVariable("id") Long
-	 * bookId, Model model) {
-	 * 
-	 * model.addAttribute("book", bookRepository.findById(bookId));
-	 * model.addAttribute("categories", cRepository.findAll()); return "editBook"; }
-	 * 
-	 * @PostMapping("/editBook") public String editSaveBook(@ModelAttribute Book
-	 * book) {
-	 * 
-	 * bookRepository.save(book); return "redirect:/booklist"; }
-	 * 
-	 * @RequestMapping(value="/books", method = RequestMethod.GET)
-	 * public @ResponseBody List<Book> bookListRest() { return (List<Book>)
-	 * bookRepository.findAll(); }
-	 * 
-	 * @RequestMapping(value="/book/{id}", method = RequestMethod.GET)
-	 * public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long
-	 * bookId) { return bookRepository.findById(bookId); }
-	 */
+
+	@GetMapping("/addSong")
+	public String getNewSongForm(Model model) {
+		model.addAttribute("song", new Song());
+		model.addAttribute("albums", aRepository.findAll());
+		return "addSong";
+	}
+
+	@PostMapping("/addSong")
+	public String saveSong(@ModelAttribute Song song) {
+
+		sRepository.save(song);
+		return "redirect:/songlist";
+	}
+
+	@GetMapping("/deletesong/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
+	public String deleteSong(@PathVariable("id") Long songId) {
+
+		sRepository.deleteById(songId);
+		return "redirect:../songlist";
+	}
+
+	@GetMapping("/editSong/{id}")
+	public String editSong(@PathVariable("id") Long songId, Model model) {
+
+		model.addAttribute("song", sRepository.findById(songId));
+		model.addAttribute("albums", aRepository.findAll());
+		return "editSong";
+	}
+
+	@PostMapping("/editSong")
+	public String editSaveSong(@ModelAttribute Song song) {
+
+		sRepository.save(song);
+		return "redirect:/songlist";
+	}
+
+	@RequestMapping(value = "/songs", method = RequestMethod.GET)
+	public @ResponseBody List<Song> songListRest() {
+		return (List<Song>) sRepository.findAll();
+	}
+
+	@RequestMapping(value = "/song/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Song> findSongRest(@PathVariable("id") Long songId) {
+		return sRepository.findById(songId);
+	}
 
 }

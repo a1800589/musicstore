@@ -66,10 +66,10 @@ public class Song {
 		if (this.album != null)
 		return "Song [songId=" + songId + ", songName=" + songName + ", album=" + this.getAlbum() + "]";
 		else
-			 return "Song [songId=" + songId + ", songName=" + songName + ", album=" + "]";
+			 return "Song [songId=" + songId + ", songName=" + songName +  "]";
 		
 	}
 
-
+	
 
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
 <head>
 <title>Song List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -18,7 +18,8 @@
 			<th>Song </th>
 			<th>Album</th>
 		
-		
+		<th></th>
+			<th></th>
 
 		</tr>
 		
@@ -27,20 +28,20 @@
 			<td th:text="${song.songName}">title</td>
 			
 			 <td th:text="${song.album.albumName}">category</td>
-<!--  
+ 
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/deletebook/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
+				th:href="@{/deletesong/{id}(id=${song.songId})}" class="btn btn-danger">Delete</a>
 			</td>
 
-			<td><a th:href="@{/editBook/{id}(id=${book.id})}"
+			<td sec:authorize="hasAuthority('ADMIN')"> <a th:href="@{/editSong/{id}(id=${song.songId})}"
 				class="btn btn-success">Edit</a></td>
-			<td sec:authorize="hasAuthority('USER')"></td>
+				<td sec:authorize="hasAuthority('USER')"></td>	<td sec:authorize="hasAuthority('USER')"></td>
 
 
-		</tr>-->
+		</tr>
 	</table>
 
-	<!--  <a href="/addBook" class="btn btn-success">New book</a>-->
+	 <a sec:authorize="hasAuthority('ADMIN')" href="/addSong" class="btn btn-success">New book</a>
 	<form th:action="@{/logout}" method="post">
 		<input type="submit" value="Sign Out" class="btn btn-warning" />
 
