@@ -16,6 +16,7 @@
 		<tr>
 			<th>Id</th>
 			<th>Song </th>
+			<th>Artist </th>
 			<th>Album</th>
 		
 		<th></th>
@@ -23,10 +24,10 @@
 
 		</tr>
 		
-		<tr th:each="song : ${songs}">
-			<td th:text="${song.songId}">id</td>
+		 <tr th:each="song : ${songs}"> 
+			 <td th:text="${song.songId}">id</td>
 			<td th:text="${song.songName}">title</td>
-			
+				<td th:text="${song.songArtist}">artist</td> 
 			 <td th:text="${song.album.albumName}">category</td>
  
 			<td sec:authorize="hasAuthority('ADMIN')"><a
@@ -39,9 +40,11 @@
 
 
 		</tr>
+	
 	</table>
 
-	 <a sec:authorize="hasAuthority('ADMIN')" href="/addSong" class="btn btn-success">New book</a>
+	 <a sec:authorize="hasAuthority('ADMIN')" href="/addSong" class="btn btn-success">New song</a>
+	  <a sec:authorize="hasAuthority('ADMIN')" href="/addAlbum" class="btn btn-success">New album</a>
 	<form th:action="@{/logout}" method="post">
 		<input type="submit" value="Sign Out" class="btn btn-warning" />
 

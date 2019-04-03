@@ -11,7 +11,7 @@
 <h1>Song</h1>
 	<form action="#" th:action="@{/editSong}"  th:object= ${song} method="post">
 	<p>Name: <input type="text" th:field="${song.songName}" /></p>
-
+	<p>Artist: <input type="text" th:field="${song.songArtist}" /></p>
 	
 	<p>Album: <select id="alblist" th:field="*{album}" >
        			<option th:each="album: ${albums}" th:value="${album.albumId}" th:text="${album.albumName}"></option>

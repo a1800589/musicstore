@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>editAlbum</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{~/css/bootstrap.min.css}" />
+ <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{~/css/custom.css}" />
+</head>
+<body>
+
+<h1>Edit current Album</h1>
+
+
+			
+
+<form action="#" th:action="@{/addAlbum}"  th:object= ${album} method="post">
+	<input type="hidden" th:field="*{albumId}" class="form-control"/>
+	<p>Name: <input type="text" th:field="${album.albumName}" /></p>
+	<p>year: <input type="text" th:field="${song.year}" /></p>
+	
+	
+	<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+	</form>
+    
+
+</body>
+</html>

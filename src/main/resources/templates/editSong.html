@@ -17,6 +17,7 @@
 <form action="#" th:action="@{/addSong}"  th:object= ${song} method="post">
 	<input type="hidden" th:field="*{songId}" class="form-control"/>
 	<p>Name: <input type="text" th:field="${song.songName}" /></p>
+	<p>Artist: <input type="text" th:field="${song.songArtist}" /></p>
 	<p>Album: <select id="alblist" th:field="*{album}" >
        			<option th:each="album: ${albums}" th:value="${album.albumId}" th:text="${album.albumName}"></option>
     		</select>	 </p> 

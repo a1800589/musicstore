@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Add album</title>
+ <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+ <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/custom.css}" />
+</head>
+<body>
+
+<h1>Song</h1>
+	<form action="#" th:action="@{/addAlbum}"  th:object= ${album} method="post">
+	<p>Album name: <input type="text" th:field="${album.albumName}" /></p>
+	<p>Year: <input type="text" th:field="${album.year}" /></p>
+	
+	
+	<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+	</form>
+    
+
+</body>
+</html>

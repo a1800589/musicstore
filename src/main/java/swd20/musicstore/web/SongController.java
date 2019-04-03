@@ -21,9 +21,9 @@ import swd20.musicstore.domain.SongRepository;
 
 @Controller
 public class SongController {
-
+ 
 	@Autowired
-	AlbumRepository aRepository;
+	private AlbumRepository aRepository;
 
 	@Autowired
 	private SongRepository sRepository;
@@ -39,13 +39,15 @@ public class SongController {
 		model.addAttribute("songs", songs);
 		return "songlist";
 	}
-
+ 
 	@GetMapping("/addSong")
 	public String getNewSongForm(Model model) {
 		model.addAttribute("song", new Song());
 		model.addAttribute("albums", aRepository.findAll());
 		return "addSong";
 	}
+	
+	
 
 	@PostMapping("/addSong")
 	public String saveSong(@ModelAttribute Song song) {
