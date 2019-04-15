@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import swd20.musicstore.domain.AlbumRepository;
+import swd20.musicstore.domain.ArtistRepository;
 import swd20.musicstore.domain.Song;
 import swd20.musicstore.domain.SongRepository;
 
@@ -27,6 +28,8 @@ public class SongController {
 
 	@Autowired
 	private SongRepository sRepository;
+	
+	
 
 	@RequestMapping(value = "/login")
 	public String login() {
@@ -38,8 +41,15 @@ public class SongController {
 		List<Song> songs = (List<Song>) sRepository.findAll();
 		model.addAttribute("songs", songs);
 		return "songlist";
-	}
+	} 
  
+	@GetMapping("/artistList/{id}")
+	public String getSongsForArtist(@PathVariable("id") Long songId, Model model) {
+		List<Song> songs = (List<Song>) sRepository.findAll();
+		model.addAttribute("songs", songs);
+		return "artistList";
+	} 
+	
 	@GetMapping("/addSong")
 	public String getNewSongForm(Model model) {
 		model.addAttribute("song", new Song());

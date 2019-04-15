@@ -38,7 +38,7 @@ public class MusicstoreApplication {
 			
 			  /*Users user1 = new
 			  Users("admin","$2a$10$kK6wHneFME4Mo3Ar9H.NXu/x09MAK6M0C8Zvcxutx/j3YJ7SNM5.y","ADMIN"); uRepository.save(user1);
-			 */
+			 */ 
 
 			log.info("fetch all songs");
 			for (Song song : songRepository.findAll()) {

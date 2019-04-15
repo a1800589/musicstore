@@ -55,13 +55,13 @@ public class AlbumController {
 	@GetMapping("/editAlbum/{id}")
 	public String editAlbum(@PathVariable("id") Long albumId, Model model) {
 
-		model.addAttribute("album", aRepository.findById(albumId));
+		model.addAttribute("albums", aRepository.findById(albumId).orElse(null));
 		model.addAttribute("songs", sRepository.findAll());
 		return "editAlbum";
 	}
 
 	@PostMapping("/editAlbum")
-	public String editSaveSong(@ModelAttribute Album album) {
+	public String editSaveAlbum(@ModelAttribute Album album) {
 
 		aRepository.save(album);
 		return "redirect:/songlist";
