@@ -4,27 +4,34 @@
 
 <title>editSong</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
- <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{~/css/bootstrap.min.css}" />
- <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{~/css/custom.css}" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{~/css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{~/css/custom.css}" />
 </head>
 <body>
 
-<h1>Edit current Song</h1>
+	<h1 th:text="#{editsong}">Edit current Song</h1>
 
 
-			
 
-<form action="#" th:action="@{/addSong}"  th:object= ${song} method="post">
-	<input type="hidden" th:field="*{songId}" class="form-control"/>
-	<p>Name: <input type="text" th:field="${song.songName}" /></p>
-	<p>Artist: <input type="text" th:field="${song.songArtist}" /></p>
-	<p>Album: <select id="alblist" th:field="*{album}" >
-       			<option th:each="album: ${albums}" th:value="${album.albumId}" th:text="${album.albumName}"></option>
-    		</select>	 </p> 
-	
-	<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+
+	<form action="#" th:action="@{/addSong}" th:object=${song}
+		method="post">
+		<input type="hidden" th:field="*{songId}" class="form-control" />
+		<p th:text="#{song}">Name:</p>
+		<input type="text" th:field="${song.songName}" />
+		<p th:text="#{artist}">Artist</p>
+		<input type="text" th:field="${song.songArtist}" />
+		<p th:text="#{album}">Album:</p>
+		<select id="alblist" th:field="*{album}">
+			<option th:each="album: ${albums}" th:value="${album.albumId}"
+				th:text="${album.albumName}"></option>
+		</select></br> <input type="submit" th:value="#{submit}"class="btn btn-success" /> <input type="reset"
+			th:value="#{reset}" class="btn btn-warning"/>
 	</form>
-    
+<a href="/songlist" class="btn btn-success" th:text="#{back}">Back
+		to Song List</a>
 
 </body>
 </html>

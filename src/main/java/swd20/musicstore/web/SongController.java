@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import swd20.musicstore.domain.AlbumRepository;
-import swd20.musicstore.domain.ArtistRepository;
+
 import swd20.musicstore.domain.Song;
 import swd20.musicstore.domain.SongRepository;
 
@@ -51,6 +51,7 @@ public class SongController {
 	} 
 	
 	@GetMapping("/addSong")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String getNewSongForm(Model model) {
 		model.addAttribute("song", new Song());
 		model.addAttribute("albums", aRepository.findAll());
@@ -60,6 +61,7 @@ public class SongController {
 	
 
 	@PostMapping("/addSong")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String saveSong(@ModelAttribute Song song) {
 
 		sRepository.save(song);
@@ -75,6 +77,7 @@ public class SongController {
 	}
 
 	@GetMapping("/editSong/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String editSong(@PathVariable("id") Long songId, Model model) {
 
 		model.addAttribute("song", sRepository.findById(songId));
@@ -83,6 +86,7 @@ public class SongController {
 	}
 
 	@PostMapping("/editSong")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String editSaveSong(@ModelAttribute Song song) {
 
 		sRepository.save(song);

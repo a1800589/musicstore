@@ -7,23 +7,49 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/custom.css}" />
+ 
+ <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#locales").change(function () {
+        var selectedOption = $('#locales').val();
+        if (selectedOption != ''){
+            window.location.replace('login?lang=' + selectedOption);
+        }
+    });
+});
+
+
+</script>
+ 
 </head>
 <body>
-	<div th:if="${param.error}">Invalid username and password.</div>
-	<div th:if="${param.logout}">You have been logged out.</div>
+	<div th:if="${param.error}"><p th:text="#{erroruser}"> </p></div>
+	<div th:if="${param.logout}"><p th:text="#{logout}"></p></div>
 	<form th:action="@{/login}" method="post">
 		<div>
-			<label> User Name : <input type="text" name="username" />
+			<label > <p th:text="#{username}"> </p> <input type="text" name="username" />
 			</label>
 		</div>
 		<div>
-			<label> Password: <input type="password" name="password" />
+			<label> <p th:text="#{password}"> </p> <input type="password" name="password" />
 			</label>
 		</div>
 		<div>
-			<input type="submit" value="Sign In" class="btn btn-primary" />
+			<input type="submit" th:value="#{signin}" class="btn btn-primary" />
 		</div>
 	</form>
-	  <a th:href="@{/signup}">Sign-up</a>
+	  <a th:href="@{/signup}" th:text="#{signup}">Sign-up</a>
+	  </br>
+	  <a href="/songlist" class="btn btn-success" th:text="#{back}">Back
+		to Song List</a> </br>
+	  <span th:text="#{lang.change}"></span>:
+	<select id="locales">
+		<option value=""></option>
+		<option value="en" th:text="#{lang.eng}"></option>
+		<option value="fi" th:text="#{lang.fi}"></option>
+	  
 </body>
 </html>

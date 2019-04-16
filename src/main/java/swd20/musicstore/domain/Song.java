@@ -23,30 +23,22 @@ public class Song {
 	private String songArtist;
 	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name = "albumId")
+	@JoinColumn(name = "albumId", nullable = false)
 	private Album album;
-	@ManyToOne
-	@JsonIgnore
-	@JoinColumn(name = "artistId")
-	private Artist artist;
-	
-	
+
 
 	public Song() {
 		super();
 	}
 
 
-
-	public Song(Long songId, String songName, String songArtist, Album album, Artist artist) {
+	public Song(Long songId, String songName, String songArtist, Album album) {
 		super();
 		this.songId = songId;
 		this.songName = songName;
 		this.songArtist = songArtist;
 		this.album = album;
-		this.artist = artist;
 	}
-
 
 
 	public Long getSongId() {
@@ -54,11 +46,9 @@ public class Song {
 	}
 
 
-
 	public void setSongId(Long songId) {
 		this.songId = songId;
 	}
-
 
 
 	public String getSongName() {
@@ -66,11 +56,9 @@ public class Song {
 	}
 
 
-
 	public void setSongName(String songName) {
 		this.songName = songName;
 	}
-
 
 
 	public String getSongArtist() {
@@ -78,11 +66,9 @@ public class Song {
 	}
 
 
-
 	public void setSongArtist(String songArtist) {
 		this.songArtist = songArtist;
 	}
-
 
 
 	public Album getAlbum() {
@@ -90,23 +76,9 @@ public class Song {
 	}
 
 
-
 	public void setAlbum(Album album) {
 		this.album = album;
 	}
-
-
-
-	public Artist getArtist() {
-		return artist;
-	}
-
-
-
-	public void setArtist(Artist artist) {
-		this.artist = artist;
-	}
-
 
 
 	@Override
