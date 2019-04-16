@@ -55,7 +55,7 @@ public class AlbumController {
 	}
 	
 	@GetMapping("/editAlbum/{id}")
-	@PreAuthorize("hasAuthority('ADMIN')")
+
 	public String editAlbum(@PathVariable("id") Long albumId, Model model) {
 
 		model.addAttribute("albums", aRepository.findById(albumId).orElse(null));
@@ -64,7 +64,7 @@ public class AlbumController {
 	}
 
 	@PostMapping("/editAlbum")
-	@PreAuthorize("hasAuthority('ADMIN')")
+
 	public String editSaveAlbum(@ModelAttribute Album album) {
 
 		aRepository.save(album);
