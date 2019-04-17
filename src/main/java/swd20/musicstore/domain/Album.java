@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Album {
@@ -18,6 +21,7 @@ public class Album {
 	@Column(name = "albumId", nullable = false, updatable = false)
 	private Long albumId;
 	@Column(name = "albumName", nullable = false)
+    @NotBlank(message = "Name is mandatory")
 	private String albumName;
 	@Column(name = "year")
 	private int year;

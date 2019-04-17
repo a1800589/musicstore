@@ -32,7 +32,7 @@ public class AlbumController {
 	@GetMapping("/addAlbum")
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String getNewAlbumForm(Model model) {
-		//model.addAttribute("song", new Song());
+
 		model.addAttribute("album", new Album());
 		return "addAlbum";
 	}

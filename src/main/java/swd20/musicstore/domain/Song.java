@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,8 +19,10 @@ public class Song {
 	@Column(name = "id", nullable = false, updatable = false)
 	private Long songId;
 	@Column(name = "name", nullable = false)
+    @NotBlank(message = "Name is mandatory")
 	private String songName;
 	@Column(name = "artist", nullable = false)
+    @NotBlank(message = "Artist is mandatory")
 	private String songArtist;
 	@ManyToOne
 	@JsonIgnore
